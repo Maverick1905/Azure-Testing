@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "CMTResult",
+				"name": "CMTDataFlow",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
