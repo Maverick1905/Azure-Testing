@@ -1,5 +1,5 @@
 {
-	"name": "AZURECMTSAMPLEDATA",
+	"name": "CMTSampleInput",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase1",

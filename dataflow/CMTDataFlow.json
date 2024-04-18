@@ -6,14 +6,14 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "AZURECMTSAMPLEDATA",
+						"referenceName": "CMTSampleInput",
 						"type": "DatasetReference"
 					},
 					"name": "HumanResourcesTable"
 				},
 				{
 					"dataset": {
-						"referenceName": "AZURECMTSAMPLEDATA",
+						"referenceName": "CMTSampleInput",
 						"type": "DatasetReference"
 					},
 					"name": "HumanResourceTable"
