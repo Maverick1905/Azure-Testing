@@ -10,12 +10,18 @@
 						"type": "DatasetReference"
 					},
 					"name": "HumanResourcesTable"
+				},
+				{
+					"name": "source1"
 				}
 			],
 			"sinks": [],
 			"transformations": [
 				{
 					"name": "select1"
+				},
+				{
+					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -29,12 +35,21 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> HumanResourcesTable",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> source1",
+				"select2 select(mapColumn(",
+				"          DepartmentID",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
 				"HumanResourcesTable select(mapColumn(",
 				"          DepartmentID,",
+				"          Name,",
+				"          GroupName,",
 				"          ModifiedDate",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> select2"
 			]
 		}
 	}
