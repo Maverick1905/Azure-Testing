@@ -25,7 +25,7 @@
 						"referenceName": "CMTcsvOutput",
 						"type": "DatasetReference"
 					},
-					"name": "sink1",
+					"name": "CMTresult",
 					"description": "CMTexport",
 					"rejectedDataLinkedService": {
 						"referenceName": "CMTResult",
@@ -83,7 +83,7 @@
 				"join1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> CMTresult"
 			]
 		}
 	}
