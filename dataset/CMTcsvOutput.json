@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText1",
+	"name": "CMTcsvOutput",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "CMTResult",
@@ -10,12 +10,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "output",
-				"container": "mycontainer"
+				"container": "cmtcsvoutput"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": true,
+			"firstRowAsHeader": false,
 			"quoteChar": "\""
 		},
 		"schema": []

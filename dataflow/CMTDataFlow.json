@@ -1,5 +1,5 @@
 {
-	"name": "dataflow1",
+	"name": "CMTDataFlow",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -19,10 +19,29 @@
 					"name": "HumanResourceTable"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "CMTcsvOutput",
+						"type": "DatasetReference"
+					},
+					"name": "sink1",
+					"description": "CMTexport",
+					"rejectedDataLinkedService": {
+						"referenceName": "CMTResult",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "OneColumnVortag"
+				},
+				{
+					"name": "OneColumnTag"
+				},
+				{
+					"name": "join1"
 				}
 			],
 			"scriptLines": [
@@ -47,13 +66,24 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> HumanResourceTable",
 				"HumanResourcesTable select(mapColumn(",
-				"          DepartmentID,",
-				"          Name,",
-				"          GroupName,",
-				"          ModifiedDate",
+				"          DepartmentID",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> OneColumnVortag",
+				"HumanResourceTable select(mapColumn(",
+				"          DepartmentID",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> OneColumnTag",
+				"OneColumnVortag, OneColumnTag join(OneColumnVortag@DepartmentID == OneColumnTag@DepartmentID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
