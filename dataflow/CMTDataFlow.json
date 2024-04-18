@@ -22,7 +22,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "CMToutput",
+						"referenceName": "CMTSampleOutput",
 						"type": "DatasetReference"
 					},
 					"name": "CMTresult",
