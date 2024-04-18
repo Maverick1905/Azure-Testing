@@ -12,16 +12,13 @@
 					"name": "HumanResourcesTable"
 				},
 				{
-					"name": "source1"
+					"name": "HumanResourceTable"
 				}
 			],
 			"sinks": [],
 			"transformations": [
 				{
 					"name": "select1"
-				},
-				{
-					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -36,20 +33,12 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> HumanResourcesTable",
 				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1",
-				"select2 select(mapColumn(",
+				"     validateSchema: false) ~> HumanResourceTable",
+				"HumanResourcesTable select(mapColumn(",
 				"          DepartmentID",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"HumanResourcesTable select(mapColumn(",
-				"          DepartmentID,",
-				"          Name,",
-				"          GroupName,",
-				"          ModifiedDate",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select2"
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
