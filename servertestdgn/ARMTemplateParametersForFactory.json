@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "servertestdgn"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"CMTResult_connectionString": {
+			"value": ""
+		},
+		"SQLSERVERSMSS_connectionString": {
+			"value": "Integrated Security=True;Data Source=LENGM0DDWLP\\SQLEXPRESS;Initial Catalog=AdventureWorks2017"
+		},
+		"SQLSERVERSMSS_password": {
+			"value": ""
+		},
+		"SQLSERVERSMSS_properties_typeProperties_userName": {
+			"value": "REPLYNET\\a.mura"
+		}
+	}
+}

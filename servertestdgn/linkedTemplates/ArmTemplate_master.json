@@ -1,0 +1,78 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "servertestdgn"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
+		"CMTResult_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CMTResult'"
+		},
+		"SQLSERVERSMSS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SQLSERVERSMSS'",
+			"defaultValue": "Integrated Security=True;Data Source=LENGM0DDWLP\\SQLEXPRESS;Initial Catalog=AdventureWorks2017"
+		},
+		"SQLSERVERSMSS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'SQLSERVERSMSS'"
+		},
+		"SQLSERVERSMSS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "REPLYNET\\a.mura"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "servertestdgn_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
+					"CMTResult_connectionString": {
+						"value": "[parameters('CMTResult_connectionString')]"
+					},
+					"SQLSERVERSMSS_connectionString": {
+						"value": "[parameters('SQLSERVERSMSS_connectionString')]"
+					},
+					"SQLSERVERSMSS_password": {
+						"value": "[parameters('SQLSERVERSMSS_password')]"
+					},
+					"SQLSERVERSMSS_properties_typeProperties_userName": {
+						"value": "[parameters('SQLSERVERSMSS_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
