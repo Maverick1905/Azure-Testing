@@ -84,7 +84,8 @@
 				"     validateSchema: false,",
 				"     partitionFileNames:[''],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> CMTresult"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> CMTresult"
 			]
 		}
 	}
