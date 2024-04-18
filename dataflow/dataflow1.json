@@ -12,13 +12,20 @@
 					"name": "HumanResourcesTable"
 				},
 				{
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
 					"name": "HumanResourceTable"
 				}
 			],
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "Only1Column"
+				},
+				{
+					"name": "Comparison"
 				}
 			],
 			"scriptLines": [
@@ -32,13 +39,26 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> HumanResourcesTable",
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> HumanResourceTable",
+				"source(output(",
+				"          DepartmentID as integer,",
+				"          Name as string,",
+				"          GroupName as string,",
+				"          ModifiedDate as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> HumanResourceTable",
 				"HumanResourcesTable select(mapColumn(",
 				"          DepartmentID",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> Only1Column",
+				"HumanResourceTable select(mapColumn(",
+				"          DepartmentID",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Comparison"
 			]
 		}
 	}
