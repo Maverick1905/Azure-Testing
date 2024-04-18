@@ -1,5 +1,5 @@
 {
-	"name": "CMTcsvOutput",
+	"name": "CMToutput",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "CMTResult",

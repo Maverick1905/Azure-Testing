@@ -22,7 +22,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "CMTcsvOutput",
+						"referenceName": "CMToutput",
 						"type": "DatasetReference"
 					},
 					"name": "CMTresult",
