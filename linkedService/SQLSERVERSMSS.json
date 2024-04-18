@@ -1,0 +1,17 @@
+{
+	"name": "SQLSERVERSMSS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=True;data source=LENGM0DDWLP\\SQLEXPRESS;initial catalog=AdventureWorks2017",
+			"userName": "REPLYNET\\a.mura",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJkMDYxOTI0OC1mY2I4LTQ1OWEtYjUyOC1mNWQ2YjhkM2M4MWYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "MySelfHostedIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

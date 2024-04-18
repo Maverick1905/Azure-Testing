@@ -1,0 +1,9 @@
+{
+	"name": "servertestdgn",
+	"location": "germanywestcentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "58bd1e79-36d2-459b-be8b-d65db616d9c5",
+		"tenantId": "fde0c627-3eb0-42d3-864c-ffa3955ab65c"
+	}
+}
