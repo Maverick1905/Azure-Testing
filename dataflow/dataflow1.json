@@ -6,14 +6,14 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "AZURECMTSAMPLEDATA",
 						"type": "DatasetReference"
 					},
 					"name": "HumanResourcesTable"
 				},
 				{
 					"dataset": {
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "AZURECMTSAMPLEDATA",
 						"type": "DatasetReference"
 					},
 					"name": "HumanResourceTable"
@@ -22,10 +22,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "Only1Column"
-				},
-				{
-					"name": "Comparison"
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -50,15 +47,13 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> HumanResourceTable",
 				"HumanResourcesTable select(mapColumn(",
-				"          DepartmentID",
+				"          DepartmentID,",
+				"          Name,",
+				"          GroupName,",
+				"          ModifiedDate",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> Only1Column",
-				"HumanResourceTable select(mapColumn(",
-				"          DepartmentID",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> Comparison"
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
